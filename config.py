@@ -1,7 +1,8 @@
-# Configuration update
+# Configuration updates
 # Author: Shaheer Nawaz
+# Team Member: Simulated Team Member
 # Date: 2026-04-25
-# Purpose: Updated database host and added connection timeout.
+# Purpose: Resolved database host conflict and kept timeout plus health check settings.
 
 import os
 
@@ -16,6 +17,11 @@ try:
 except ValueError:
     CONNECTION_TIMEOUT = 30
 
+try:
+    HEALTH_CHECK_INTERVAL = int(os.environ.get('HEALTH_CHECK_INTERVAL', '10'))
+except ValueError:
+    HEALTH_CHECK_INTERVAL = 10
+
 
 class Config:
     """Base configuration class for the Sakila Flask application."""
@@ -25,6 +31,7 @@ class Config:
     MYSQL_PASSWORD = MYSQL_PASSWORD
     MYSQL_DB = MYSQL_DB
     CONNECTION_TIMEOUT = CONNECTION_TIMEOUT
+    HEALTH_CHECK_INTERVAL = HEALTH_CHECK_INTERVAL
     SECRET_KEY = os.environ.get(
         'SECRET_KEY',
         'your-secret-key-here-change-this-in-production'
