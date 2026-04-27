@@ -48,7 +48,8 @@ jobs:
           echo "- Status: successful" >> $GITHUB_STEP_SUMMARY
 
       - name: Send staging notification
-        run: echo "Slack notification: Deployment to staging successful"
+        run: |
+          echo "Slack notification: Deployment to staging successful"
 
   deploy-production:
     name: Deploy to Production
@@ -76,9 +77,8 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh release create "${{ steps.version.outputs.tag }}" \
-            --title "Production Release ${{ steps.version.outputs.tag }}" \
-            --notes "Simulated production deployment for the Sakila Flask DevOps assignment."
+          gh release create "${{ steps.version.outputs.tag }}" --title "Production Release ${{ steps.version.outputs.tag }}" --notes "Simulated production deployment for the Sakila Flask DevOps assignment."
 
       - name: Send production notification
-        run: echo "Slack notification: Deployment to production successful"
+        run: |
+          echo "Slack notification: Deployment to production successful"
