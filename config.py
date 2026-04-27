@@ -2,7 +2,8 @@
 # Author: Shaheer Nawaz
 # Team Member: Simulated Team Member
 # Date: 2026-04-25
-# Purpose: Resolved database host conflict and kept timeout plus health check settings.
+# Purpose: Resolved database host conflict and kept timeout plus health
+# check settings.
 
 import os
 
