@@ -58,8 +58,7 @@ jobs:
           --health-retries=10
 
     env:
-          env:
-      PYTHONPATH: ${{ github.workspace }}
+      PYTHONPATH: "${{ github.workspace }}"
       MYSQL_HOST: 127.0.0.1
       MYSQL_USER: root
       MYSQL_PASSWORD: admin
@@ -148,3 +147,4 @@ jobs:
         with:
           name: trivy-security-report
           path: trivy-results.txt
+EOF
